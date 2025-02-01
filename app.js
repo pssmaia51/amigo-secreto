@@ -75,4 +75,6 @@ function limparLista() {
     document.getElementById('resultado').innerHTML = '';
     responsiveVoice.speak('A lista de amigos foi limpa.', 'Brazilian Portuguese Female', { rate: 1.2 });
     document.getElementById('amigo').focus();
+
+    //Projeto Final 
 }
