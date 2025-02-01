@@ -4,8 +4,9 @@ let listaAmigos = [];
 document.addEventListener('DOMContentLoaded', () => {
     const input = document.getElementById('amigo');
 
-    input.addEventListener('keyup', function(event) {
+    input.addEventListener('keydown', function(event) {
         if (event.key === 'Enter') {
+            event.preventDefault();
             adicionarAmigo();
         }
     });
@@ -18,12 +19,12 @@ function adicionarAmigo() {
     const nomeAmigo = input.value.trim();
 
     if (nomeAmigo === '') {
-        alert('Por favor, insira um nome.');
+        responsiveVoice.speak('Por favor, insira um nome.', 'Brazilian Portuguese Female', { rate: 1.2 });
         return;
     }
 
     if (listaAmigos.length >= MAX_PARTICIPANTES) {
-        alert('Limite de participantes atingido. Não é possível adicionar mais amigos.');
+        responsiveVoice.speak('Limite de participantes atingido. Não é possível adicionar mais amigos.', 'Brazilian Portuguese Female', { rate: 1.2 });
         return;
     }
 
@@ -45,7 +46,7 @@ function atualizarListaAmigos() {
 
 function sortearAmigo() {
     if (listaAmigos.length < 2) {
-        alert('É necessário pelo menos 2 participantes para realizar o sorteio.');
+        responsiveVoice.speak('É necessário pelo menos 2 participantes para realizar o sorteio.', 'Brazilian Portuguese Female', { rate: 1.2 });
         return;
     }
 
@@ -64,12 +65,14 @@ function sortearAmigo() {
         li.textContent = res;
         ulResultado.appendChild(li);
     });
+
+    responsiveVoice.speak('O sorteio foi realizado com sucesso.', 'Brazilian Portuguese Female', { rate: 1.2 });
 }
 
 function limparLista() {
     listaAmigos = [];
     document.getElementById('listaAmigos').innerHTML = '';
     document.getElementById('resultado').innerHTML = '';
+    responsiveVoice.speak('A lista de amigos foi limpa.', 'Brazilian Portuguese Female', { rate: 1.2 });
     document.getElementById('amigo').focus();
 }
-
