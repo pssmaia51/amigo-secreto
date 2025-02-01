@@ -4,9 +4,8 @@ let listaAmigos = [];
 document.addEventListener('DOMContentLoaded', () => {
     const input = document.getElementById('amigo');
 
-    input.addEventListener('keypress', function(event) {
+    input.addEventListener('keyup', function(event) {
         if (event.key === 'Enter') {
-            event.preventDefault();
             adicionarAmigo();
         }
     });
@@ -73,5 +72,4 @@ function limparLista() {
     document.getElementById('resultado').innerHTML = '';
     document.getElementById('amigo').focus();
 }
-
 
