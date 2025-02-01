@@ -1,5 +1,18 @@
-const MAX_PARTICIPANTES = 10; // Defina o limite de participantes
-const listaAmigos = [];
+const MAX_PARTICIPANTES = 10;
+let listaAmigos = [];
+
+document.addEventListener('DOMContentLoaded', () => {
+    const input = document.getElementById('amigo');
+
+    input.addEventListener('keypress', function(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            adicionarAmigo();
+        }
+    });
+
+    input.focus();
+});
 
 function adicionarAmigo() {
     const input = document.getElementById('amigo');
@@ -18,6 +31,7 @@ function adicionarAmigo() {
     listaAmigos.push(nomeAmigo);
     atualizarListaAmigos();
     input.value = '';
+    input.focus();
 }
 
 function atualizarListaAmigos() {
@@ -52,4 +66,12 @@ function sortearAmigo() {
         ulResultado.appendChild(li);
     });
 }
+
+function limparLista() {
+    listaAmigos = [];
+    document.getElementById('listaAmigos').innerHTML = '';
+    document.getElementById('resultado').innerHTML = '';
+    document.getElementById('amigo').focus();
+}
+
 
